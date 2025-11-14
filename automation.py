@@ -34,14 +34,24 @@ def check_git_status(repo_path):
     return status is not None and len(status) > 0
 
 
+def create_activity_log(repo_path):
+    """Create or update an activity log file to ensure there's always a change."""
+    log_file = Path(repo_path) / ".activity_log.txt"
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    # Append timestamp to activity log
+    with open(log_file, 'a') as f:
+        f.write(f"Automated run: {timestamp}\n")
+    
+    print(f"[{timestamp}] Activity logged.")
+
+
 def git_commit_and_push(repo_path):
     """Commit and push changes to the repository."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
-    # Check if there are changes
-    if not check_git_status(repo_path):
-        print(f"[{timestamp}] No changes to commit.")
-        return True
+    # Always create an activity log entry to ensure there's a change
+    create_activity_log(repo_path)
     
     # Add all changes
     print(f"[{timestamp}] Adding changes...")
