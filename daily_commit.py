@@ -49,15 +49,16 @@ def make_daily_commit():
 
 def run_scheduler():
     """Run the scheduler that executes daily commits."""
-    # Schedule the task to run every day at 2:30 PM
-    schedule.every().day.at("14:30").do(make_daily_commit)
+    # Schedule the task to run every day at 2:38 PM
+    schedule.every().day.at("14:38").do(make_daily_commit)
     
     print("Daily commit automation started!")
-    print("Scheduled to run every day at 9:00 AM")
+    print("Scheduled to run every day at 2:35 PM")
     print("Press Ctrl+C to stop\n")
     
-    # Run immediately on start (optional)
-    # make_daily_commit()
+    # Run immediately on start
+    print("Running initial commit now...")
+    make_daily_commit()
     
     # Keep the script running
     while True:
