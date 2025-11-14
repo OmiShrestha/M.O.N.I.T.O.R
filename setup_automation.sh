@@ -28,9 +28,9 @@ cat > "$PLIST_FILE" << EOF
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
-        <integer>9</integer>
+        <integer>14</integer>
         <key>Minute</key>
-        <integer>0</integer>
+        <integer>17</integer>
     </dict>
     
     <key>StandardOutPath</key>
@@ -50,7 +50,7 @@ launchctl unload "$PLIST_FILE" 2>/dev/null
 launchctl load "$PLIST_FILE"
 
 echo "✓ Automation setup complete!"
-echo "  - The script will run daily at 9:00 AM"
+echo "  - The script will run daily at 2:17 PM"
 echo "  - Logs will be saved to: $SCRIPT_DIR/automation.log"
 echo "  - Errors will be saved to: $SCRIPT_DIR/automation.error.log"
 echo ""
