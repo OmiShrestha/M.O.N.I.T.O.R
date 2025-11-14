@@ -36,7 +36,7 @@ pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/venv/bin
 
 NOTES:
 ------
-- The script runs at 2:35 PM daily
+- The script runs at 3:00 PM, 6:00 PM, and 9:00 PM daily
 - It also runs immediately when you start it
 - nohup keeps it running even after closing terminal
 - & runs it in background

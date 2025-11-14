@@ -16,7 +16,7 @@ LOG_FILE = "daily_log.txt"
 
 
 def make_daily_commit():
-    """Create a commit with current date and time."""
+    """Create a commit  with current date and time."""
     try:
         os.chdir(REPO_PATH)
         
@@ -49,11 +49,13 @@ def make_daily_commit():
 
 def run_scheduler():
     """Run the scheduler that executes daily commits."""
-    # Schedule the task to run every day at 2:38 PM
-    schedule.every().day.at("14:38").do(make_daily_commit)
+    # Schedule the task to run three times daily: 3 PM, 6 PM, and 9 PM
+    schedule.every().day.at("15:00").do(make_daily_commit)  # 3:00 PM
+    schedule.every().day.at("18:00").do(make_daily_commit)  # 6:00 PM
+    schedule.every().day.at("21:00").do(make_daily_commit)  # 9:00 PM
     
     print("Daily commit automation started!")
-    print("Scheduled to run every day at 2:35 PM")
+    print("Scheduled to run at: 3:00 PM, 6:00 PM, and 9:00 PM")
     print("Press Ctrl+C to stop\n")
     
     # Run immediately on start
