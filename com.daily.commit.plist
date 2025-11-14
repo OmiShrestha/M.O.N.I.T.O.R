@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.daily.commit</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/theomigod/Downloads/automation/venv/bin/python3</string>
+        <string>/Users/theomigod/Downloads/automation/daily_commit.py</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/daily_commit.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/daily_commit.error.log</string>
+    <key>WorkingDirectory</key>
+    <string>/Users/theomigod/Downloads/automation</string>
+</dict>
+</plist>

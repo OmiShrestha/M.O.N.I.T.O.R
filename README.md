@@ -1,80 +1,84 @@
 # Daily Git Automation
 
-This script automatically commits and pushes changes to your repository every day.
+This project automatically creates and pushes a git commit every day with the current date and time.
 
 ## Setup
 
-1. **Make the setup script executable and run it:**
+1. Install dependencies:
    ```bash
-   chmod +x setup_automation.sh
-   ./setup_automation.sh
+   pip install -r requirements.txt
    ```
 
-2. **The script will run automatically every day at 9:00 AM**
+2. Make sure your git repository is configured with a remote:
+   ```bash
+   git remote -v
+   ```
 
-## Manual Testing
+3. Ensure you have git credentials configured (so you don't need to enter password each time)
 
-Test the automation script manually:
+## Running Options
+
+### Option 1: Run as a Long-Running Process
+
+Run the script directly - it will keep running and make daily commits:
+
 ```bash
-python3 automation.py
+python3 daily_commit.py
 ```
 
-## Configuration
+This will commit and push every day at 9:00 AM. To change the time, edit the schedule in the script.
 
-### Change the Schedule
+### Option 2: Use macOS LaunchAgent (Recommended for macOS)
 
-Edit the plist file at `~/Library/LaunchAgents/com.user.gitautomation.plist`
+Create a file `~/Library/LaunchAgents/com.daily.commit.plist`:
 
-Change the `Hour` and `Minute` values:
 ```xml
-<key>StartCalendarInterval</key>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
 <dict>
-    <key>Hour</key>
-    <integer>9</integer>  <!-- Change this -->
-    <key>Minute</key>
-    <integer>0</integer>  <!-- Change this -->
+    <key>Label</key>
+    <string>com.daily.commit</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/theomigod/Downloads/automation/daily_commit.py</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>9</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/tmp/daily_commit.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/daily_commit.error.log</string>
 </dict>
+</plist>
 ```
 
-After editing, reload the job:
+Load it with:
 ```bash
-launchctl unload ~/Library/LaunchAgents/com.user.gitautomation.plist
-launchctl load ~/Library/LaunchAgents/com.user.gitautomation.plist
+launchctl load ~/Library/LaunchAgents/com.daily.commit.plist
 ```
 
-## Managing the Automation
+### Option 3: Use Cron
 
-**Stop the automation:**
-```bash
-launchctl unload ~/Library/LaunchAgents/com.user.gitautomation.plist
+Add to crontab (`crontab -e`):
+```
+0 9 * * * cd /Users/theomigod/Downloads/automation && /usr/bin/python3 daily_commit.py
 ```
 
-**Start the automation:**
-```bash
-launchctl load ~/Library/LaunchAgents/com.user.gitautomation.plist
-```
+## What It Does
 
-**Check if it's running:**
-```bash
-launchctl list | grep gitautomation
-```
+- Creates/updates `daily_log.txt` with timestamp
+- Commits the change with a timestamped message
+- Pushes to the remote repository
+- Runs automatically every day
 
-## Logs
+## Customization
 
-- Success logs: `automation.log`
-- Error logs: `automation.error.log`
-
-## How It Works
-
-The script:
-1. Checks for any uncommitted changes in the repository
-2. If changes exist, it adds all files (`git add .`)
-3. Commits with a timestamp message
-4. Pushes to the remote repository
-5. Logs all actions with timestamps
-
-## Requirements
-
-- Python 3
-- Git configured with push access to your remote repository
-- macOS (uses launchd for scheduling)
+- Change the schedule time in `daily_commit.py` (line with `schedule.every().day.at("09:00")`)
+- Modify what gets committed by editing the `make_daily_commit()` function

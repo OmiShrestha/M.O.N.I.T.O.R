@@ -1,0 +1,43 @@
+Daily Commit Automation - Essential Commands
+=============================================
+
+START (runs in background, survives terminal close):
+---------------------------------------------------
+nohup python3 daily_commit.py > automation.log 2>&1 &
+
+
+CHECK if it's running:
+---------------------
+ps aux | grep daily_commit.py
+
+OR
+
+pgrep -f daily_commit.py
+
+
+STOP:
+-----
+pkill -f daily_commit.py
+
+
+VIEW LOGS (see what it's doing):
+--------------------------------
+tail -f automation.log
+
+OR
+
+cat automation.log
+
+
+RESTART (stop then start):
+--------------------------
+pkill -f daily_commit.py && nohup python3 daily_commit.py > automation.log 2>&1 &
+
+
+NOTES:
+------
+- The script runs at 2:30 PM daily
+- nohup keeps it running even after closing terminal
+- & runs it in background
+- Logs are saved to automation.log
+- Make sure you're in the /Users/theomigod/Downloads/automation directory
