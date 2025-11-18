@@ -1,4 +1,4 @@
-Daily Commit Automation - Essential Commands
+daily commit automation - essential commands
 =============================================
 
 START (runs in background, survives terminal close):
@@ -29,7 +29,7 @@ OR
 cat automation.log
 
 
-RESTART (stop then start):
+RESTART (STOP then START):
 --------------------------
 pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
 
@@ -41,7 +41,7 @@ git commit -m "Test commit"
 git push
 
 
-TEST METRICS (run demo):
+TEST METRICS (run a demo):
 ------------------------
 source .venv/bin/activate
 python scripts/test_metrics.py
@@ -49,12 +49,11 @@ python scripts/test_metrics.py
 
 NOTES:
 ------
-- The script runs at 9:00 AM, 2:00 PM, and 8:00 PM daily
-- It also runs immediately when you start it
-- Automatically tracks system metrics (CPU, memory, disk, network)
-- Metrics saved to data/system_metrics.json
-- Commit logs saved to data/daily_log.txt
-- nohup keeps it running even after closing terminal
-- & runs it in background
-- Logs are saved to automation.log
-- Make sure you're in the /Users/theomigod/Downloads/automation directory
+- this script runs at 9:00 AM, 2:00 PM, and 8:00 PM daily
+- it also runs immediately when you start it
+- automatically tracks system metrics (CPU, memory, disk, network)
+- metrics are saved to data/system_metrics.json
+- commit logs are saved to data/daily_log.txt
+- nohup keeps it running even after closing the terminal & runs it in background
+- logs are saved to automation.log
+- make sure you're in the correct (/Users/theomigod/Downloads/automation) directory
