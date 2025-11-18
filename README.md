@@ -1,33 +1,33 @@
-# automated system monitoring with daily commit logs
+# automated system monitoring w/ daily commit logs
 
-**An intelligent automation that keeps your GitHub active while tracking system health metrics.**
+**intelligent automation that keeps your github active while tracking system health metrics.**
 
-A Python-based automation tool that performs scheduled commits and maintains daily updates while simultaneously monitoring and logging system performance metric such as CPU, memory, disk and network.
-
----
-
-## Features
-
-- **Automated Daily Commits** - Maintains GitHub contribution graph with 3 commits daily
-- **System Metrics Tracking** - Monitors CPU, memory, disk space, and network activity
-- **Smart Scheduling** - Runs at 9 AM, 2 PM, and 8 PM automatically
-- **Professional Commit Messages** - Shows actual system metrics in commit history
-- **Privacy-Focused** - Metrics stored locally, only commit logs pushed to GitHub
-- **Modular Design** - Clean separation between scripts and data
+python-based automation tool that performs scheduled commits and maintains daily updates while simultaneously monitoring and logging system performance metrics such as cpu, memory, disk and network.
 
 ---
 
-## What It Does
+## features
 
-Every day at **9:00 AM, 2:00 PM, and 8:00 PM**, the automation:
+- **automated daily commits** - maintains github contribution graph with 3 commits daily
+- **system metrics tracking** - monitors cpu, memory, disk space, and network activity
+- **smart scheduling** - runs at 9 am, 2 pm, and 8 pm automatically
+- **professional commit messages** - shows actual system metrics in commit history
+- **privacy-focused** - metrics stored locally, only commit logs pushed to github
+- **modular design** - clean separation between scripts and data
 
-1. Collects current system metrics (CPU, memory, disk, network)
-2. Logs metrics locally in `data/system_metrics.json`
-3. Updates `data/daily_log.txt` with formatted entry
-4. Creates professional Git commit with metrics in message
-5. Pushes to GitHub automatically
+---
 
-**Example commit messages:**
+## what it does
+
+every day at **9:00 am, 2:00 pm, and 8:00 pm**, the automation:
+
+1. collects current system metrics (cpu, memory, disk, network)
+2. logs metrics locally in `data/system_metrics.json`
+3. updates `data/daily_log.txt` with formatted entry
+4. creates professional git commit with metrics in message
+5. pushes to github automatically
+
+**example commit messages:**
 ```
 Morning health check: CPU 23% | Memory 73% | Disk 21.6% used
 Afternoon monitoring: CPU 45% | Memory 78% | Disk 21.7% used
@@ -36,98 +36,98 @@ Evening baseline: CPU 18% | Memory 65% | Disk 22% used
 
 ---
 
-## Quick Start
+## quick start
 
-### 1. Install Dependencies
+### 1. install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 2. Start Automation
+### 2. start automation
 
 ```bash
 nohup .venv/bin/python3 scripts/daily_commit.py > automation.log 2>&1 &
 ```
 
-### 3. Verify It's Running
+### 3. verify it's running
 
 ```bash
 pgrep -f daily_commit.py
 ```
 
-That's it! Your automation is now running in the background.
+that's it. your automation is now running in the background.
 
 ---
 
-## Project Structure
+## project structure
 
 ```
 automation/
-├── scripts/              # Python modules
-│   ├── daily_commit.py   # Main automation script
-│   ├── system_metrics.py # Metrics collection module
-│   └── test_metrics.py   # Demo/testing script
+├── scripts/              # python modules
+│   ├── daily_commit.py   # main automation script
+│   ├── system_metrics.py # metrics collection module
+│   └── test_metrics.py   # demo/testing script
 │
-├── data/                 # Data files
-│   ├── daily_log.txt     # Commit history (pushed to Git)
-│   └── system_metrics.json # Metrics data (local only)
+├── data/                 # data files
+│   ├── daily_log.txt     # commit history (pushed to git)
+│   └── system_metrics.json # metrics data (local only)
 │
-├── COMMANDS.txt          # Quick command reference
-├── METRICS_GUIDE.md      # Detailed metrics documentation
-└── requirements.txt      # Python dependencies
+├── COMMANDS.txt          # quick command reference
+├── METRICS_GUIDE.md      # detailed metrics documentation
+└── requirements.txt      # python dependencies
 ```
 
 ---
 
-## Management Commands
+## management commands
 
-See `COMMANDS.txt` for full reference, or use these:
+see `COMMANDS.txt` for full reference, or use these:
 
 ```bash
-# Check status
+# check status
 pgrep -f daily_commit.py
 
-# Stop automation
+# stop automation
 pkill -f daily_commit.py
 
-# View logs
+# view logs
 tail -f automation.log
 
-# Test metrics collection
+# test metrics collection
 python scripts/test_metrics.py
 ```
 
 ---
 
-## System Metrics
+## system metrics
 
-The automation tracks:
+the automation tracks:
 
-- **CPU**: Usage percentage, core count, frequency
-- **Memory**: Total, used, available RAM + swap
-- **Disk**: Total, used, free space + I/O statistics
-- **Network**: Bytes sent/received, packet counts
+- **cpu**: usage percentage, core count, frequency
+- **memory**: total, used, available ram + swap
+- **disk**: total, used, free space + i/o statistics
+- **network**: bytes sent/received, packet counts
 
-All metrics are saved locally in JSON format for easy analysis and historical tracking.
+all metrics are saved locally in json format for easy analysis and historical tracking.
 
 ---
 
-## Configuration
+## configuration
 
-### Change Schedule Times
+### change schedule times
 
-Edit `scripts/daily_commit.py`:
+edit `scripts/daily_commit.py`:
 
 ```python
-schedule.every().day.at("09:00").do(make_daily_commit)  # 9 AM
-schedule.every().day.at("14:00").do(make_daily_commit)  # 2 PM
-schedule.every().day.at("20:00").do(make_daily_commit)  # 8 PM
+schedule.every().day.at("09:00").do(make_daily_commit)  # 9 am
+schedule.every().day.at("14:00").do(make_daily_commit)  # 2 pm
+schedule.every().day.at("20:00").do(make_daily_commit)  # 8 pm
 ```
 
-### Change Metrics Format
+### change metrics format
 
-In `scripts/daily_commit.py`, change:
+in `scripts/daily_commit.py`, change:
 
 ```python
 metrics_tracker.log_metrics(format='json')  # or 'txt' for text format
@@ -135,43 +135,40 @@ metrics_tracker.log_metrics(format='json')  # or 'txt' for text format
 
 ---
 
-## Use Cases
+## use cases
 
-- Maintain active GitHub profile for recruiters
-- Track system performance over time
-- Monitor resource usage patterns
-- Demonstrate automation skills
-- Learn Python scheduling and system monitoring
-
----
-
-## Documentation
-
-- **`COMMANDS.txt`** - Essential commands for managing automation
-- **`METRICS_GUIDE.md`** - Comprehensive guide to metrics tracking
-- **`scripts/test_metrics.py`** - Run for interactive demo
+- track system performance over time
+- monitor resource usage patterns
+- demonstrate automation skills
+- learn python scheduling and system monitoring
 
 ---
 
-## Privacy & Security
+## documentation
 
-- System metrics are **NOT pushed to GitHub** (see `.gitignore`)
-- Only timestamp logs are committed
-- No sensitive system information exposed
-- All data stays on your local machine
-
----
-
-## Contributing
-
-This is a personal automation project, but feel free to fork and customize for your own use!
+- **`COMMANDS.txt`** - essential commands for managing automation
+- **`METRICS_GUIDE.md`** - comprehensive guide to metrics tracking
+- **`scripts/test_metrics.py`** - run for interactive demo
 
 ---
 
-## License
+## privacy & security
 
-MIT License - Feel free to use and modify as needed.
+- system metrics are **not pushed to github** (see `.gitignore`)
+- only timestamp logs are committed
+- no sensitive system information exposed
+- all data stays on your local machine
 
 ---
 
-**Made with love for maintaining GitHub streaks and monitoring system health**
+## contributing
+
+this is a personal automation project, but feel free to fork and customize for your own personal use.
+
+---
+
+## license
+
+mit license - feel free to use and modify as needed.
+
+---
