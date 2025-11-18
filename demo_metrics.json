@@ -1,0 +1,72 @@
+[
+  {
+    "timestamp": "2025-11-17 21:15:14",
+    "cpu": {
+      "usage_percent": 18.8,
+      "count": 8,
+      "frequency_mhz": null
+    },
+    "memory": {
+      "total_gb": 16.0,
+      "available_gb": 4.25,
+      "used_gb": 6.42,
+      "percent": 73.5
+    },
+    "swap": {
+      "total_gb": 2.0,
+      "used_gb": 1.03,
+      "percent": 51.7
+    },
+    "disk": {
+      "total_gb": 460.43,
+      "used_gb": 15.65,
+      "free_gb": 56.85,
+      "percent": 21.6
+    },
+    "disk_io": {
+      "read_mb": 331293.49,
+      "write_mb": 89900.59
+    },
+    "network": {
+      "bytes_sent_mb": 555.36,
+      "bytes_recv_mb": 2006.32,
+      "packets_sent": 1690976,
+      "packets_recv": 9267496
+    }
+  },
+  {
+    "timestamp": "2025-11-17 21:16:31",
+    "cpu": {
+      "usage_percent": 13.6,
+      "count": 8,
+      "frequency_mhz": null
+    },
+    "memory": {
+      "total_gb": 16.0,
+      "available_gb": 4.24,
+      "used_gb": 6.34,
+      "percent": 73.5
+    },
+    "swap": {
+      "total_gb": 2.0,
+      "used_gb": 1.03,
+      "percent": 51.3
+    },
+    "disk": {
+      "total_gb": 460.43,
+      "used_gb": 15.65,
+      "free_gb": 56.85,
+      "percent": 21.6
+    },
+    "disk_io": {
+      "read_mb": 331612.52,
+      "write_mb": 89923.54
+    },
+    "network": {
+      "bytes_sent_mb": 563.65,
+      "bytes_recv_mb": 2007.69,
+      "packets_sent": 1701303,
+      "packets_recv": 9276538
+    }
+  }
+]

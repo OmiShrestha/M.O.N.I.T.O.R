@@ -1,0 +1,48 @@
+
+============================================================
+System Metrics - 2025-11-17 21:15:15
+============================================================
+
+CPU:
+  Usage: 17.7%
+  Cores: 8
+
+Memory:
+  Total: 16.0 GB
+  Used: 6.35 GB (73.0%)
+  Available: 4.31 GB
+
+Disk (/):
+  Total: 460.43 GB
+  Used: 15.65 GB (21.6%)
+  Free: 56.85 GB
+
+Network:
+  Sent: 555.4 MB
+  Received: 2006.33 MB
+  Packets Sent: 1691048
+  Packets Received: 9267588
+
+============================================================
+System Metrics - 2025-11-17 21:16:32
+============================================================
+
+CPU:
+  Usage: 14.1%
+  Cores: 8
+
+Memory:
+  Total: 16.0 GB
+  Used: 6.34 GB (73.5%)
+  Available: 4.25 GB
+
+Disk (/):
+  Total: 460.43 GB
+  Used: 15.65 GB (21.6%)
+  Free: 56.85 GB
+
+Network:
+  Sent: 563.66 MB
+  Received: 2007.7 MB
+  Packets Sent: 1701339
+  Packets Received: 9276591
