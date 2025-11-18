@@ -8,7 +8,6 @@ python-based automation tool that performs scheduled commits and maintains daily
 
 ## features
 
-- **automated daily commits** - maintains github contribution graph with 3 commits daily
 - **system metrics tracking** - monitors cpu, memory, disk space, and network activity
 - **smart scheduling** - runs at 9 am, 2 pm, and 8 pm automatically
 - **professional commit messages** - shows actual system metrics in commit history
