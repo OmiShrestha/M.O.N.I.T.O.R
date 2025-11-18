@@ -15,17 +15,18 @@ __pycache__/
 venv/
 ENV/
 env/
+scripts/__pycache__/
 
 # IDE
 .vscode/
 .idea/
 
 # System metrics (tracked locally, not pushed to GitHub)
-system_metrics.json
+data/system_metrics.json
 
 # Demo/test files (optional - uncomment if you don't want these committed)
-demo_metrics.json
-demo_metrics.txt
+data/demo_metrics.json
+data/demo_metrics.txt
 
 # Logs (optional - uncomment if you don't want logs committed)
 # *.log

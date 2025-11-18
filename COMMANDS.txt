@@ -3,7 +3,7 @@ Daily Commit Automation - Essential Commands
 
 START (runs in background, survives terminal close):
 ---------------------------------------------------
-nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/daily_commit.py > automation.log 2>&1 &
+nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
 
 
 CHECK if it's running:
@@ -31,7 +31,7 @@ cat automation.log
 
 RESTART (stop then start):
 --------------------------
-pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/daily_commit.py > automation.log 2>&1 &
+pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
 
 
 TEST PUSH (verify auto-push works):
@@ -44,7 +44,7 @@ git push
 TEST METRICS (run demo):
 ------------------------
 source .venv/bin/activate
-python test_metrics.py
+python scripts/test_metrics.py
 
 
 NOTES:
@@ -52,7 +52,8 @@ NOTES:
 - The script runs at 9:00 AM, 2:00 PM, and 8:00 PM daily
 - It also runs immediately when you start it
 - Automatically tracks system metrics (CPU, memory, disk, network)
-- Metrics saved to system_metrics.json
+- Metrics saved to data/system_metrics.json
+- Commit logs saved to data/daily_log.txt
 - nohup keeps it running even after closing terminal
 - & runs it in background
 - Logs are saved to automation.log

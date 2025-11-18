@@ -4,7 +4,12 @@ Test script to demonstrate system metrics tracking.
 Run this to see how the metrics module works.
 """
 
-from system_metrics import SystemMetrics
+import os
+import sys
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.system_metrics import SystemMetrics
 
 def demo_json_format():
     """Demo: JSON format (recommended for structured data)"""
@@ -12,10 +17,10 @@ def demo_json_format():
     print("DEMO 1: JSON Format (Recommended)")
     print("=" * 60)
     
-    tracker = SystemMetrics("demo_metrics.json")
+    tracker = SystemMetrics("data/demo_metrics.json")
     metrics = tracker.log_metrics(format='json')
     
-    print(f"✓ Metrics saved to: demo_metrics.json")
+    print(f"✓ Metrics saved to: data/demo_metrics.json")
     print("\nYou can:")
     print("  - Parse it with Python's json module")
     print("  - Analyze trends over time")
@@ -29,10 +34,10 @@ def demo_txt_format():
     print("DEMO 2: TXT Format (Human-Readable)")
     print("=" * 60)
     
-    tracker = SystemMetrics("demo_metrics.txt")
+    tracker = SystemMetrics("data/demo_metrics.txt")
     tracker.log_metrics(format='txt')
     
-    print(f"✓ Metrics saved to: demo_metrics.txt")
+    print(f"✓ Metrics saved to: data/demo_metrics.txt")
     print("\nYou can:")
     print("  - Read it directly in any text editor")
     print("  - Quick visual inspection")
@@ -96,7 +101,7 @@ if __name__ == "__main__":
     print("✅ Demo Complete!")
     print("=" * 60)
     print("\nNext Steps:")
-    print("  1. Check the generated files: demo_metrics.json & demo_metrics.txt")
+    print("  1. Check the generated files: data/demo_metrics.json & data/demo_metrics.txt")
     print("  2. Your daily_commit.py now automatically tracks metrics")
-    print("  3. Run: python daily_commit.py (or use the scheduled version)")
+    print("  3. Run: python scripts/daily_commit.py (or use the scheduled version)")
     print("\n")

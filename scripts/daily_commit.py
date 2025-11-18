@@ -6,15 +6,19 @@ This script creates a daily commit with current date and time.
 
 from datetime import datetime
 import os
+import sys
 import schedule
 import subprocess
 import time
-from system_metrics import SystemMetrics
+
+# Add parent directory to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from scripts.system_metrics import SystemMetrics
 
 # Configuration
-REPO_PATH = os.path.dirname(os.path.abspath(__file__))
-LOG_FILE = "daily_log.txt"
-METRICS_FILE = "system_metrics.json"  # or use .txt for human-readable format
+REPO_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # Parent directory
+LOG_FILE = "data/daily_log.txt"
+METRICS_FILE = "data/system_metrics.json"  # or use .txt for human-readable format
 
 
 def make_daily_commit():
