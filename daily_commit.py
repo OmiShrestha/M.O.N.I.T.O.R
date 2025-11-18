@@ -43,15 +43,24 @@ def make_daily_commit():
         # Print summary to console
         print(metrics_tracker.get_summary())
         
-        # Create or update log file
+        # Create professional log entry
+        log_entry = (
+            f"{time_context}: "
+            f"CPU {metrics['cpu']['usage_percent']}% | "
+            f"Memory {metrics['memory']['percent']}% | "
+            f"Disk {metrics['disk']['percent']}% used - "
+            f"{timestamp}\n"
+        )
+        
+        # Create or update log file with fancy format
         log_path = os.path.join(REPO_PATH, LOG_FILE)
         with open(log_path, 'a') as f:
-            f.write(f"Automated commit: {timestamp}\n")
+            f.write(log_entry)
         
         # Git operations - only commit the log file (metrics stay local)
         subprocess.run(['git', 'add', LOG_FILE], check=True)
         
-        # Create professional commit message with time context
+        # Create professional commit message with time context (same as log entry)
         commit_message = (
             f"{time_context}: "
             f"CPU {metrics['cpu']['usage_percent']}% | "
