@@ -1,9 +1,19 @@
 daily commit automation - essential commands
 =============================================
 
-START (runs in background, survives terminal close):
----------------------------------------------------
+START WITH LAUNCHD (recommended - auto-restarts, survives reboots):
+-------------------------------------------------------------------
+launchctl load ~/Library/LaunchAgents/com.daily.commit.plist
+
+
+START MANUALLY (runs in background, survives terminal close):
+-------------------------------------------------------------
 nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
+
+
+START WITH CAFFEINATE (prevents sleep while running):
+-----------------------------------------------------
+caffeinate -s nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
 
 
 CHECK if it's running:
@@ -14,10 +24,23 @@ OR
 
 pgrep -f daily_commit.py
 
+OR (for launchd)
+
+launchctl list | grep com.daily.commit
+
 
 STOP:
 -----
 pkill -f daily_commit.py
+
+OR (for launchd)
+
+launchctl stop com.daily.commit
+
+
+STOP LAUNCHD PERMANENTLY:
+------------------------
+launchctl unload ~/Library/LaunchAgents/com.daily.commit.plist
 
 
 VIEW LOGS (see what it's doing):
@@ -32,6 +55,14 @@ cat automation.log
 RESTART (STOP then START):
 --------------------------
 pkill -f daily_commit.py && nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
+
+OR (with caffeinate to prevent sleep)
+
+pkill -f daily_commit.py && caffeinate -s nohup /Users/theomigod/Downloads/automation/.venv/bin/python3 /Users/theomigod/Downloads/automation/scripts/daily_commit.py > automation.log 2>&1 &
+
+OR (for launchd)
+
+launchctl stop com.daily.commit && launchctl start com.daily.commit
 
 
 MANUAL PUSH (run immediately without waiting):
