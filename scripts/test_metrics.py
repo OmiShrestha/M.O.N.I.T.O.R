@@ -1,3 +1,5 @@
+# Author: Omi Shrestha
+
 #!/usr/bin/env python3
 """
 Test script to demonstrate system metrics tracking.
