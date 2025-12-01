@@ -165,9 +165,3 @@ metrics_tracker.log_metrics(format='json')  # or 'txt' for text format
 this is a personal automation project, but feel free to fork and customize for your own personal use.
 
 ---
-
-## license
-
-mit license - feel free to use and modify as needed.
-
----
