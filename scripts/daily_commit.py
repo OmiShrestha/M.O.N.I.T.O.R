@@ -21,7 +21,6 @@ LOG_FILE = "data/daily_log.txt"
 AUTOMATION_LOG = "automation.log"
 METRICS_FILE = "data/system_metrics.json"  # or use .txt for human-readable format
 
-
 def make_daily_commit():
     """Create a commit  with current date and time."""
     try:
